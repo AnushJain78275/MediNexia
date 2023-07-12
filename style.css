@@ -13,6 +13,11 @@ body {
   backdrop-filter: blur(5px);
 }
 
+#downloadButton {
+  background-color: red;
+  border-radius: 50px;
+  color: white;
+} 
 .container {
   display: flex;
   justify-content: center;
