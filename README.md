@@ -21,7 +21,6 @@ There are five main steps in which convform can be implemented -
 3.	Define the question to ask using conv-question attribute as this:
 <input type="text" name="name" conv-question="Question to ask">
 
-
 4.	If we'd like to show specific questions based on your user's answer.
 <select name="conversation" conv-question="Question To Ask">
   <option value="yes">Yes</option>
