@@ -8,7 +8,7 @@ For data storage and management, I utilized CloudHQ, a cloud-based service that 
 Throughout the development process, I focused on creating a responsive and intuitive user experience. I implemented error handling mechanisms to address common user mistakes and provided informative feedback to guide users towards the desired outcomes. Additionally, I incorporated dynamic updates to reflect changes in the healthcare landscape and ensure the bot's content remained relevant.
 By utilizing the power of HTML, CSS, JavaScript, jQuery, form submission, and CloudHQ, I was able to develop a functional and personalized health bot. Although it may not have the advanced AI capabilities and scalability of Azure Health Bot, this solution provided an effective and cost-efficient alternative for creating a tailored virtual health assistant.
 
-#ConvFom Jquery Plugin
+ConvFom Jquery Plugin
 ConvForm is a fancy jQuery plugin to create a smart, interactive live chat bot from a normal html form that you can define your own questions for each form field using conv-* attributes.
 There are five main steps in which convform can be implemented -
 1. The plugin requires the latest jQuery library is loaded properly in the document.\
