@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Healthbot</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="dist/jquery.convform.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="demo.css">
+</head>
+<body>
+	<section id="demo" class="custom-section">
+		<div class="logo-wrapper">
+			<img src="medical.png" alt="Logo" class="logo">
+		</div>
+	<section id="demo">
+	    <div class="vertical-align">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-sm-6
+					 col-sm-offset-3 col-xs-offset-0">
+	                    <div class="card no-border">
+	                        <div id="chat" class="conv-form-wrapper">
+	                            <form action="" method="GET" class="hidden">
+	                                <select data-conv-question="Hello! I'm a Healthbot. How may I help you?" name="first-question">
+	                                    <option value="yes">Consult for a doctor</option>
+	                                </select>
+	                                <input type="text" name="name" data-conv-question="Alright! First, tell me your full name, please.|Okay! Please, tell me your name first.">
+	                                <input type="text" data-conv-question="Howdy, {name}:0! It's a pleasure to meet you , I'm a Healthbot made by MediNexia." data-no-answer="true">
+	                                <select name="single" data-conv-question="What kind of consultation would you like?">
+	                                    <option value="GP">General Physician</option>
+	                                    <option value="PSY">Psychiatry</option>
+	                                    <option value="PED">Pediatrics</option>
+	                                    <option value="URO">Urology</option>
+										<option value="DERM">Dermatology</option>
+										<option value="SND">Stomach and Digestion</option>
+	                                </select>
+									<div data-conv-fork="single">
+										<div data-conv-case="GP">
+										  <input type="text" data-conv-question="A General Physician provides primary healthcare for general medical conditions. They diagnose and treat a wide range of health issues. If you have any specific concerns  pls do feel free to contact the right doctor.">
+										  <select data-conv-question="OK, {name}:0, you can either choose to go back to our website and view the consultancy options or you can directly book an appointment">
+											<option value="wev" data-callback="web">back to Website</option>
+											<option value="appt" data-callback="appt">Appointment</option>
+										  </select>
+										</div>
+										<div data-conv-case="PSY">
+										  <input type="text" data-conv-question="A Psychiatrist specializes in mental health. They diagnose and treat mental illnesses. If you have any specific concerns about your mental well-being  pls do feel free to contact the right doctor.">
+										  <select data-conv-question="OK, {name}:0, you can either choose to visit our website and view the available services or you can directly book an appointment">
+											<option value="wev" data-callback="web">back to Website</option>
+											<option value="appt" data-callback="appt">Appointment</option>
+										  </select>
+										</div>
+										<div data-conv-case="PED">
+										  <input type="text" data-conv-question="A Pediatrician is a doctor who specializes in the medical care of children. They provide preventive care, diagnose, and treat various childhood illnesses. If you have any specific concerns about your child's health pls do feel free to contact the right doctor.">
+										  <select data-conv-question="OK, {name}:0, you can either choose to visit our website for more information or you can directly book an appointment">
+											<option value="wev" data-callback="web">back to Website</option>
+											<option value="appt" data-callback="appt">Appointment</option>
+										  </select>
+										</div>
+										<div data-conv-case="URO">
+										  <input type="text" data-conv-question="A Urologist specializes in the diagnosis and treatment of conditions related to the urinary system and male reproductive system. If you have any specific concerns  pls do feel free to contact the right doctor.">
+										  <select data-conv-question="OK, {name}:0, you can either choose to visit our website for more information or you can directly book an appointment">
+											<option value="wev" data-callback="web">back to Website</option>
+											<option value="appt" data-callback="appt">Appointment</option>
+										  </select>
+										</div>
+										<div data-conv-case="DERM">
+										  <input type="text" data-conv-question="A Dermatologist specializes in diagnosing and treating conditions related to the skin, hair, and nails. If you have any specific concerns  pls do feel free to contact the right doctor.">
+										  <select data-conv-question="OK, {name}:0, you can either choose to visit our website for more information or you can directly book an appointment">
+											<option value="wev" data-callback="web">back to Website</option>
+											<option value="appt" data-callback="appt">Appointment</option>
+										  </select>
+										</div>
+										<div data-conv-case="SND">
+										  <input type="text" data-conv-question="A specialist in Stomach and Digestion focuses on the diagnosis and treatment of digestive system disorders. If you have any specific concerns  pls do feel free to contact the right doctor.">
+										  <select data-conv-question="OK, {name}:0, you can either choose to visit our website for more information or you can directly book an appointment">
+											<option value="wev" data-callback="web">back to Website</option>
+											<option value="appt" data-callback="appt">Appointment</option>
+										  </select>
+										</div>
+									</div>
+	                                <select name="choice" data-callback="storeState" data-conv-question="Ok, do you want to continue?">
+	                                    <option value="yes">Yes</option>
+	                                    <option value="no">No</option>
+	                                </select>
+	                                <div data-conv-fork="choice">
+	                                    <div data-conv-case="no">
+	                                        <input type="text" data-conv-question="Ok, {name}:0 " data-no-answer="true">
+	                                    </div>
+	                                    <div data-conv-case="yes">
+		                                    <select name="thought" data-conv-question="Did you find what you wanted? If no, you can continue or you can fill out the Google feedback form for us to improve!">
+		                                    	<option value="yes">Yes</option>
+		                                    	<option value="no">No..</option>
+												<option value="feedback" data-callback="feedback">Feedback</option>
+		                                    </select>
+	                                    </div>
+	                                </div>
+	                                <select data-conv-question="This is it! Thank you for chatting with me! If you have any more questions in the future, feel free to reach out. Have a great day!" id="" data-callback="displayUserData">
+	                                    <option value="END" data-callback="END">End the conv!</option>
+	                                </select>
+	                            </form>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</section>
+	</section>
+	<script type="text/javascript" src="jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="dist/autosize.min.js"></script>
+	<script type="text/javascript" src="dist/jquery.convform.js"></script>
+	<script>
+		function web(stateWrapper, ready) {
+			window.open("indey.html");
+			ready();
+		}
+		function appt(stateWrapper, ready) {
+			window.open("index2.html");
+			ready();
+		}
+		function feedback(stateWrapper, ready) {
+			window.open("https://docs.google.com/forms/d/e/1FAIpQLSeSkcDvmq5NbKS6IwGtgpRat_jIgQIYIpzE-UJDf0flPibhMA/viewform?usp=sf_link");
+			ready();
+		}
+		function END(stateWrapper, ready) {
+			window.open("indey.html");
+			ready();
+		}
+		var rollbackTo = false;
+		var originalState = false;
+		function storeState(stateWrapper, ready) {
+			rollbackTo = stateWrapper.current;
+			console.log("storeState called: ",rollbackTo);
+			ready();
+		}
+		function rollback(stateWrapper, ready) {
+			console.log("rollback called: ", rollbackTo, originalState);
+			console.log("answers at the time of user input: ", stateWrapper.answers);
+			if(rollbackTo!=false) {
+				if(originalState==false) {
+					originalState = stateWrapper.current.next;
+						console.log('stored original state');
+				}
+				stateWrapper.current.next = rollbackTo;
+				console.log('changed current.next to rollbackTo');
+			}
+			ready();
+		}
+		function restore(stateWrapper, ready) {
+			if(originalState != false) {
+				stateWrapper.current.next = originalState;
+				console.log('changed current.next to originalState');
+			}
+			ready();
+		}
+	</script>
+	<script>
+		jQuery(function($){
+			convForm = $('#chat').convform({selectInputStyle: 'disable'});
+			console.log(convForm);
+		});
+	</script>
+	<script>
+		function displayUserData(convForm) {
+  // Get the user's input from the convForm object
+  var userData = convForm.getFormData();
+
+  // Display the user's input in the console
+  console.log("User Data:", userData);
+}
+	</script>
+</body>
+</html>
