@@ -9,118 +9,64 @@ Throughout the development process, I focused on creating a responsive and intui
 By utilizing the power of HTML, CSS, JavaScript, jQuery, form submission, and CloudHQ, I was able to develop a functional and personalized health bot. Although it may not have the advanced AI capabilities and scalability of Azure Health Bot, this solution provided an effective and cost-efficient alternative for creating a tailored virtual health assistant.
 
 #ConvFom Jquery Plugin
-convForm is a fancy jQuery plugin to create a smart, interactive live chat bot from a normal html form that you can define your own questions for each form field using conv-* attributes.
+ConvForm is a fancy jQuery plugin to create a smart, interactive live chat bot from a normal html form that you can define your own questions for each form field using conv-* attributes.
+There are five main steps in which convform can be implemented -
+1. The plugin requires the latest jQuery library is loaded properly in the document.\
+   <script src="//code.jquery.com/jquery.min.js"></script>
 
-How to use it:
-1. The plugin requires the latest jQuery library is loaded properly in the document.
-
-1
-<script src="//code.jquery.com/jquery.min.js"></script>
-2. Load the jQuery convForm plugin's JavaScript and CSS files in the document.
-
-1
+2.	Load the jQuery ConvForm plugin's JavaScript and CSS files in the document.
 <link rel="stylesheet" href="dist/jquery.convform.css">
-2
 <script src="dist/jquery.convform.js"></script>
-3. Define the question to ask using conv-question attribute as this:
 
-1
+3.	Define the question to ask using conv-question attribute as this:
 <input type="text" name="name" conv-question="Question to ask">
-4. If you'd like to show specific questions based on your user's answer.
 
-01
+
+4.	If we'd like to show specific questions based on your user's answer.
 <select name="conversation" conv-question="Question To Ask">
-02
   <option value="yes">Yes</option>
-03
-  <option value="no">No</option>
-04
+<option value="no">No</option>
 </select>
-05
- 
-06
 <div conv-fork="conversation">
-07
   <div conv-case="yes">
-08
     <input type="text" conv-question="Question To Ask" no-answer="true">
-09
   </div>
-10
   <div conv-case="no">
-11
     <select name="thought" conv-question="Question To Ask">
-12
       <option value="yes">Yes</option>
-13
       <option value="no">No</option>
-14
     </select>
-15
   </div>
-16
 </div>
-5. Possible plugin options with default values.
 
-view source
-01
+5.	Possible plugin options with default values.
 var convForm = $('.my-conv-form-wrapper').convform({
-02
-    placeHolder :'Type Here',
-03
-    typeInputUi :'textarea',// 'input' or 'textarea'
-04
+   placeHolder : 'Type Here',
+    typeInputUi : 'textarea', // 'input' or 'textarea'
     timeOutFirstQuestion : 1200,
-05
-    buttonClassStyle :'icon2-arrow',
-06
-    selectInputStyle:'show',// or disable, hide
-07
-    selectInputDisabledText:'Select an option',
-08
+    buttonClassStyle : 'icon2-arrow',
+    selectInputStyle: 'show', // or disable, hide
+    selectInputDisabledText: 'Select an option',
     eventList : {
-09
-      onSubmitForm :function(convState) {
-10
-        console.log('completed');
-11
+      onSubmitForm : function(convState) {
+       console.log('completed');
         convState.form.submit();
-12
         return true;
-13
       },
-14
-      onInputSubmit :function(convState, readyCallback) {
-15
+      onInputSubmit : function(convState, readyCallback) {
         if(convState.current.input.hasOwnProperty('callback')) {
-16
-          if(typeof convState.current.input.callback ==='string') {
-17
+          if(typeof convState.current.input.callback === 'string') {
             window[convState.current.input.callback](convState, readyCallback);
-18
-          }else {
-19
+          } else {
             convState.current.input.callback(convState, readyCallback);
-20
           }
-21
-        }else {
-22
+        } else {
           readyCallback();
-23
         }
-24
       }
-25
     },
-26
-    formIdName :'convForm',
-27
-    inputIdName :'userInput',
-28
-    loadSpinnerVisible :'',
-29
-    buttonText:'▶'
-30
+    formIdName : 'convForm',
+    inputIdName : 'userInput',
+    loadSpinnerVisible : '',
+    buttonText: '▶'
 });
-
